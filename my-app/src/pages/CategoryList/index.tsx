@@ -1,51 +1,66 @@
 // CategoryList.tsx
-import React, { useState } from 'react';
+import React, { ReactHTMLElement, useState } from 'react';
 import { Category } from '../../interfaces';
-
+import { CustomButton } from '../../components/UI/Buttons';
+import './Category.css'
+import cross from '../../cross-svgrepo-com.svg';
+import CustomModal from '../../components/UI/Modal';
 interface Props {
   categories: Category[];
   onCategoriesChange: (categories: Category[]) => void;
+  handleAddCategory:(e: React.FormEvent)=>void;
+  newCategory:string;
+  handleCategoryUpdation:()=>void;
+  handleCategoryRemoval:(e:any)=>void;
+  setIsOpen:(val:boolean)=>void;
+  modalIsOpen:boolean;
 }
 
-const CategoryList: React.FC<Props> = ({ categories, onCategoriesChange }) => {
-  const [isEditing, setIsEditing] = useState<number | null>(null);
+const CategoryList: React.FC<Props> = ({ modalIsOpen, setIsOpen,categories,handleCategoryRemoval, onCategoriesChange,handleAddCategory,newCategory, handleCategoryUpdation }) => {
+ 
 
-  const handleEdit = (index: number) => {
-    if (!categories[index].isMain) {
-      setIsEditing(index);
-    }
-  };
 
-  const handleSave = (index: number, newName: string) => {
-    const newCategories = [...categories];
-    newCategories[index].name = newName;
-    setIsEditing(null);
-    onCategoriesChange(newCategories);
-  };
+function openModal(val:string) {
+  
+  localStorage.setItem("categoryName",val)
+  setIsOpen(true);
+}
 
-  const handleAdd = () => {
-    onCategoriesChange([...categories, { isMain: false, order: categories.length, name: '' }]);
-    setIsEditing(categories.length);
-  };
+function afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  
+}
 
-  // TODO: Implement drag and drop reordering functionality
-
+function closeModal() {
+  setIsOpen(false);
+}
   return (
     <div>
-      {categories.map((category, index) => (
-        <div key={index} onClick={() => handleEdit(index)}>
-          {isEditing === index ? (
-            <input
-              autoFocus
-              defaultValue={category.name}
-              onBlur={(e) => handleSave(index, e.target.value)}
-            />
-          ) : (
-            category.name
-          )}
-        </div>
-      ))}
-      <button onClick={handleAdd}>Add Category</button>
+     
+     {categories.length?(<div>
+       {categories.map((item:any)=>{
+        return(
+          <>
+          <div className='category-list'>
+            <div>{item.name}</div>
+            <div onClick={()=>openModal(item.name)}><img alt="cross" className='cross-logo' src={cross}/></div>
+            
+          </div>
+          <div className='divider2'></div>
+          </>
+        )
+       })}
+
+     </div>):<h1>"Add categories"</h1>}
+      <div className='category-input'>
+      <input type="text" value={newCategory} onChange={handleAddCategory}/>
+      <div className='category-add-button'>
+
+      <CustomButton name={"Add"} onClick={handleCategoryUpdation}/>  
+      </div>
+
+      </div>
+      <CustomModal modalIsOpen={modalIsOpen} handleCategoryRemoval={handleCategoryRemoval} afterOpenModal={afterOpenModal} closeModal={closeModal} info={"sme"} />
     </div>
   );
 };

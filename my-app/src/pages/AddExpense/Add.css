@@ -1,0 +1,14 @@
+.header{
+    background-color:#ADD8E6;
+    color:#00008B;
+    
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+@media only screen and (max-width:600px){
+    .button-2{
+        margin-top:10px;
+        display:flex;
+       }
+}

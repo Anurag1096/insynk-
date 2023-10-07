@@ -13,18 +13,41 @@
 .expense-item{
     display:flex;
     width:70%;
-    padding:4px 10px;
+    padding:4px 15px;
+    font-weight:medium;
     justify-content:space-between;
     cursor:pointer;
+}
+.expense-amount{
+    padding-right:15px;
 }
 .month-header{
 color:#0077b6;
 padding:4px 10px;
 width:70%;
+margin-top:20px;
+font-weight:bold;
 display:flex;
 justify-content:space-between
 }
+.month-total{
+    padding-right:14px;
+}
 .divider{
+    border:2px;
+    width:72%;
+    height:1.5px;
+    border-radius:2px;
+    background-color:blue;
+}
+.divider-in{
+    border:2px;
+    width:72%;
+    height:1px;
+    border-radius:2px;
+    background-color:green;
+}
+.divider-out{
     border:2px;
     width:72%;
     height:1px;
@@ -38,3 +61,54 @@ justify-content:space-between
 .cash-out{
     color:#0077b6
 }
+
+@media only screen and (max-width: 600px) {
+   .expense-container{
+    padding:10px 10px
+   }
+   .button-2{
+    margin-top:10px;
+    display:flex;
+   }
+   
+    .expense-item{
+        display:flex;
+        width:90%;
+        font-size:14px;
+        padding:4px 10px;
+        font-weight:medium;
+        justify-content:space-between;
+        cursor:pointer;
+    }
+    .month-header{
+    color:#0077b6;
+    padding:4px 10px;
+    width:90%;
+    font-size:14px;
+    margin-top:20px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between
+    }
+    .divider{
+        border:2px;
+        width:90%;
+        height:1.5px;
+        border-radius:2px;
+        background-color:blue;
+    }
+    .divider-in{
+        border:2px;
+        width:90%;
+        height:1px;
+        border-radius:2px;
+        background-color:green;
+    }
+    .divider-out{
+        border:2px;
+        width:90%;
+        height:1px;
+        border-radius:2px;
+        background-color:blue;
+    }
+  }

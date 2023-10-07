@@ -1,0 +1,32 @@
+.category-list{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:4px 10px;
+    margin-top:20px;
+    
+}
+.divider2{
+    height:1px;
+    background-color:#ADD8E6;
+    margin:4px 0;
+    width:100%;
+}
+.category-input{
+    margin:14px 10px; 
+}
+.category-add-button{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:8px;
+}
+.cross-logo{
+    width:8px;
+    height:8px;
+   cursor:pointer;
+}
+.cross-logo:hover{
+    display:inline;
+    width:10px;
+    height:10px;
+}

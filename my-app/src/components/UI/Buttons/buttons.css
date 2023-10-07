@@ -17,3 +17,15 @@
 .my-button2:hover{
  background-color:#ADD8E6
 }
+@media only screen and (max-width: 600px) {
+    .my-button2{
+        background-color:#1338BE;
+        color:white;
+        cursor:pointer;
+        padding:10px 20px;
+        border:1px;
+        margin:2px;
+        width:100%;
+        
+    }
+  }
