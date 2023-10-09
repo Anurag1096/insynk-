@@ -1,17 +1,46 @@
-# Frontend Engineer Technical Assignment
-This is a technical assignment for candidates applying to InSynk Studios' frontend engineer position.
+# Getting Started with Create React App
 
-## How to
-### 1. Fork
-Fork this repository to your github and update your code via Git. (make sure to make as many commits as you can to show the different steps you took)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### 2. Implement
-Read and implement the requirements written in [Specification.md](/Specification.md)
-- Try to limit your implementation time around 8 - 16 hours.
-- Please write an explanation of your code/decision making process in [Description.md](/Description.md). 
+## Available Scripts
 
-### 3. Submit
-After finishing the assignment please send us a link to your forked repo via email.
+In the project directory, you can run:
 
-## Issues
-- If you have any questions please don't hesitate to reach out to us by creating a [Github Issue] in this repository
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
