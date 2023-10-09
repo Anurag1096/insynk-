@@ -21,16 +21,6 @@ const Home = () => {
     // For setting up the category on page load 
     useEffect(() => {
         setData(InitialData)
-        // issue in updating the category
-        // if(itemCategory){
-        //     let newOrder = categoryList.length + 1
-        //     let list = { isMain: true, order: newOrder, name: itemCategory }
-        //     setCategoryList(prevState => [...prevState, list]);
-        //     setCategory("")
-        // }else{
-        //     setCategoryList(Categories)
-
-        // }
         setCategoryList(Categories)
     }, [])
     useEffect(() => {
@@ -50,6 +40,7 @@ const Home = () => {
         let newOrder = categoryList.length + 1
         let list = { isMain: true, order: newOrder, name: newCategory }
         setCategoryList(prevState => [...prevState, list]);
+        localStorage.setItem("mainCategoryList",JSON.stringify([...categoryList,list]))
         setCategory("")
     }
     const handleCategoryRemoval = (e: any) => {
@@ -66,6 +57,7 @@ const Home = () => {
             }
             const valRemovedList = categoryList.filter((item) => item.name !== val)
             setCategoryList(valRemovedList)
+            localStorage.setItem("mainCategoryList",JSON.stringify(valRemovedList))
             setIsOpen(false)
         } else {
             console.log("no val")
@@ -106,7 +98,7 @@ const Home = () => {
     }
     return (
         <>
-
+            <div className='category-main'>
             {index === 0 ? (<>
                 <div className="header" >
                     <h3>Expense Tracking</h3>
@@ -115,6 +107,7 @@ const Home = () => {
                 </div>
                 <Expenses expenses={data} handelEditChange={handelEditChange} /></>) :
                 (<>
+
                     <div className="header" >
                         <h3>Category</h3>
 
@@ -127,6 +120,7 @@ const Home = () => {
                         modalIsOpen={modalIsOpen}
                         setIsOpen={setIsOpen}
                         categories={categoryList}
+                        setCategoryList={setCategoryList}
                         onCategoriesChange={handleChange}
                         handleAddCategory={handleAddCategory} /></>)}
 
@@ -136,6 +130,7 @@ const Home = () => {
                 <CustomButton2 name="Expenses" onClick={handleExpenseSwitch} />
                 <CustomButton2 name="Category" onClick={handleCategorySwitch} />
 
+            </div>
             </div>
         </>
     )

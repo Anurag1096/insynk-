@@ -1,5 +1,5 @@
 // CategoryList.tsx
-import React, { ReactHTMLElement, useState } from 'react';
+import React, { ReactHTMLElement, useEffect, useState } from 'react';
 import { Category } from '../../interfaces';
 import { CustomButton } from '../../components/UI/Buttons';
 import './Category.css'
@@ -14,11 +14,17 @@ interface Props {
   handleCategoryRemoval:(e:any)=>void;
   setIsOpen:(val:boolean)=>void;
   modalIsOpen:boolean;
+  setCategoryList:(val:[])=>void;
 }
 
-const CategoryList: React.FC<Props> = ({ modalIsOpen, setIsOpen,categories,handleCategoryRemoval, onCategoriesChange,handleAddCategory,newCategory, handleCategoryUpdation }) => {
+const CategoryList: React.FC<Props> = ({ modalIsOpen,setCategoryList, setIsOpen,categories,handleCategoryRemoval, onCategoriesChange,handleAddCategory,newCategory, handleCategoryUpdation }) => {
  
-
+useEffect(()=>{
+  let categoryList= localStorage.getItem("mainCategoryList");
+  if(categoryList){
+    setCategoryList(JSON.parse(categoryList))
+  }
+},[])
 
 function openModal(val:string) {
   
@@ -35,7 +41,7 @@ function closeModal() {
   setIsOpen(false);
 }
   return (
-    <div>
+    <div >
      
      {categories.length?(<div>
        {categories.map((item:any)=>{

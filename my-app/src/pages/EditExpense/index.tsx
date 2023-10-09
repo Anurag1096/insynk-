@@ -1,13 +1,14 @@
-import { useState } from 'react';
-import { Expense, ExpenseTypeEnum, Categories } from '../../interfaces';
+import { useEffect, useState } from 'react';
+import { Expense, ExpenseTypeEnum,Category, Categories } from '../../interfaces';
 import AddEditForm from '../../components/AddEditForm';
 import { useNavigate } from 'react-router-dom';
 import { CustomButton, CustomButton2 } from '../../components/UI/Buttons';
-
+import "./Edit.css"
 
 const EditExpense = () => {
    const item = localStorage.getItem('expense');
-
+   const mainCategory=localStorage.getItem("mainCategoryList"); 
+   const [categoryData,setCategoryData] =  useState<Category[]>([])
    const navigate = useNavigate()
    const defaultType = ExpenseTypeEnum.CashIn
    const initialData: Expense = item ? {
@@ -25,13 +26,21 @@ const EditExpense = () => {
       amount: 0,
       description: ""
    };
+   useEffect(()=>{
+      if(mainCategory){
+        let parseData=JSON.parse(mainCategory)
+        setCategoryData(parseData)
+      }else{
+         setCategoryData(Categories)
+      }
+   },[mainCategory])
    const [formState, setFormState] = useState<Expense>(initialData);
    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
       if (name === "category") {
          setFormState(prevState => ({
             ...prevState,
-            [name]: Categories.find(cat => cat.name === value) || prevState.category
+            [name]: categoryData.find(cat => cat.name === value) || prevState.category
          }));
       }
       else if (name === 'amount') {
@@ -94,6 +103,7 @@ const EditExpense = () => {
    }
    return (
       <>
+      <div className='edit-main'>
          <div className="header" >
             <h5>Edit Expense</h5>
             <div style={{width:'20px'}}></div>
@@ -103,12 +113,13 @@ const EditExpense = () => {
             formState={formState}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            Categories={Categories}
+            Categories={categoryData}
             ExpenseTypeEnum={ExpenseTypeEnum}
          />
          <div className='button-2'>
             <CustomButton2 name="Edit" onClick={handleSubmit} />
             <CustomButton2 name="Cancel" onClick={handleCancel} />
+         </div>
          </div>
       </>
    )

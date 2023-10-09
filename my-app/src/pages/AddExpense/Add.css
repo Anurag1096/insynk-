@@ -1,14 +1,23 @@
 .header{
     background-color:#ADD8E6;
     color:#00008B;
-    
     display:flex;
     justify-content:center;
     align-items:center;
+}
+.add-main{
+    width:30%;
+    position:relative;
+    top:10px;
+    left:35%;
 }
 @media only screen and (max-width:600px){
     .button-2{
         margin-top:10px;
         display:flex;
        }
+       .add-main{
+        width:100%;
+        position:static;
+    }
 }

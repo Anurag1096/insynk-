@@ -6,9 +6,19 @@
     justify-content:center;
     align-items:center;
 }
+.edit-main{
+    width:30%;
+    position:relative;
+    top:10px;
+    left:35%;
+}
 @media only screen and (max-width:600px){
     .button-2{
         margin-top:10px;
         display:flex;
        }
+       .edit-main{
+        width:100%;
+        position:static;
+    }
 }

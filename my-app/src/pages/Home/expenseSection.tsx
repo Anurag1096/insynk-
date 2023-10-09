@@ -27,7 +27,7 @@ const handleEditNav=(expenseToEdit:any)=>{
                     <div className="month-header">
                         {monthYearKey.replace("-","/")} 
                         <span className="month-total">
-                            Total: {monthExpenses.reduce((sum:number, expense:any) =>
+                        € {monthExpenses.reduce((sum:number, expense:any) =>
 
                                 sum + Number(expense.type === ExpenseTypeEnum.CashIn? expense.amount:-expense.amount)
                             
